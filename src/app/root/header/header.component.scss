@@ -1,0 +1,140 @@
+.main-container {
+    padding: 0 1.4em;
+
+   
+    .tabs {
+        .switch {
+            display: flex;
+            // border: 1px solid #579540; 
+            width: 100%;
+            font-family: 'Lato';
+            border-radius: 7px;
+            padding: 0;
+            
+            .job-list {
+                    width: 50%;
+                    text-align: center;
+                    // padding: 0.7em;
+                    border-radius: 7px;
+                    font-size: 30px;
+                    padding: 0;
+                    margin: 0;
+                    // border: 2px solid black;
+                    height: 53px;
+
+                    span{
+                        margin: 0;
+                        padding: 0;
+
+                        ion-icon{
+                            // border: 2px solid green;
+                            margin-bottom: 0;
+                        }
+
+                        p{
+                            font-size: 12px;
+                            // border: 2px solid blue;
+                            margin-top: -15px;
+                        }
+                    }
+                }
+            .delivery-list {
+                    width: 50%;
+                    text-align: center;
+                    // padding: 0.7em;
+                    border-radius: 7px;
+                    font-size: 30px;
+                    padding: 0;
+                    margin: 0;
+                    // border: 2px solid black;
+                    height: 53px;
+
+                    span{
+                        margin: 0;
+                        padding: 0;
+
+                        ion-icon{
+                            // border: 2px solid green;
+                            margin-bottom: 0;
+                        }
+
+                        p{
+                            font-size: 12px;
+                            // border: 2px solid blue;
+                            margin-top: -15px;
+                        }
+                    }
+                }
+                
+                .history {
+                    width: 50%;
+                    text-align: center;
+                    // padding: 0.7em;
+                    border-radius: 7px;
+                    font-size: 30px;
+                    padding: 0;
+                    margin: 0;
+                    // border: 2px solid black;
+                    height: 53px;
+
+                    span{
+                        margin: 0;
+                        padding: 0;
+
+                        ion-icon{
+                            // border: 2px solid green;
+                            margin-bottom: 0;
+                        }
+
+                        p{
+                            font-size: 12px;
+                            // border: 2px solid blue;
+                            margin-top: -15px;
+                        }
+                    }
+                }
+
+                .profile{
+                    width: 50%;
+                    text-align: center;
+                    // padding: 0.7em;
+                    border-radius: 7px;
+                    font-size: 30px;
+                    padding: 0;
+                    margin: 0;
+                    // border: 2px solid black;
+                    height: 53px;
+
+                    span{
+                        margin: 0;
+                        padding: 0;
+
+                        ion-icon{
+                            // border: 2px solid green;
+                            margin-bottom: 0;
+                        }
+
+                        p{
+                            font-size: 12px;
+                            // border: 2px solid blue;
+                            margin-top: -15px;
+                        }
+                    }
+                }
+            }
+        }
+
+
+        
+        .active{
+            // background-color: var(--primary-color);
+            // color: #fff;
+            color: #579540;
+        }
+        .non-active{
+            background-color: #fff;
+            color: #000;
+    }
+    }
+
+

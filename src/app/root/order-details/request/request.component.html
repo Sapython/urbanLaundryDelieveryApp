@@ -1,0 +1,103 @@
+<div class="main-container">
+  <div class="header">
+    <div class="btn" routerLink="../../pickup">
+      <ion-button color="primary-contrast">
+        <span><ion-icon name="chevron-back-outline"></ion-icon></span>
+      </ion-button>
+    </div>
+    <div class="content">
+      <p>Order Details</p>
+    </div>
+  </div> 
+ 
+  <div class="orders"> 
+    <div class="id-1" *ngIf="currentPickupData">
+      <span id="content">
+        <!-- nav 1 -->
+        <nav id="data">
+          <p id="name">{{currentPickupData.userDetails.displayName}}</p>
+          <a id="number" [href]="'tel:'+currentPickupData.userDetails.phone">
+            <ion-icon name="call-outline"></ion-icon>
+            {{currentPickupData.userDetails.phone}}
+          </a>
+        </nav>
+        <!-- nav 2 -->
+        <ion-button class="reject" id="button" color="primary-contrast">Call</ion-button>
+      </span>
+      <span id="details">
+        <nav style="font-weight: bold;">
+          <!-- <p>Distance</p> -->
+          <p>Order {{dataProvider.mode=='pickup' ?  'Pickup' : 'Delivery'}} Time</p>
+        </nav>
+        <nav>
+          
+          <!-- <p>
+            <ion-icon name="map-outline"></ion-icon>&nbsp;
+            <span style="color: #579540;">{{currentPickupData.distance}}</span>
+          </p> -->
+          
+          <p>
+            <ion-icon name="time-outline"></ion-icon>&nbsp;
+            <span>{{currentPickupData.slot.endTime.toDate() | date}} - {{currentPickupData.slot.startTime.toDate() | date}}</span>
+          </p>
+        </nav>
+      </span>
+      <span id="pickup">
+        <nav id="header"><p>{{dataProvider.mode=='pickup' ?  'Pickup' : 'Delivery'}} From</p></nav>
+        <nav id="address">
+            <span id="loc-add">
+                <p><ion-icon name="location-outline"></ion-icon></p>
+                <p>{{currentPickupData.userDetails.pickupAddress.address}},{{currentPickupData.userDetails.pickupAddress?.area?.name}},{{currentPickupData.userDetails.pickupAddress?.pinCode}}</p> 
+            </span>
+            <span id="loc-logo">
+              <p><ion-icon name="navigate-circle-outline"></ion-icon></p>
+            </span>
+        </nav>
+      </span>
+      <span id="pickup">
+        <nav id="header"><p>{{dataProvider.mode=='pickup' ?  'Pickup' : 'Delivery'}} To</p></nav>
+        <nav id="address">
+            <span id="loc-add">
+                <p><ion-icon name="location-outline"></ion-icon></p>
+                <p>Shop C-01,409/276-277, Shakuntalam Apartment <br>Mutthiganj, Near Maya Press, Allahabad-211003</p> 
+            </span>
+            <span id="loc-logo">
+              <p><ion-icon name="navigate-circle-outline"></ion-icon></p>
+            </span>
+        </nav>
+      </span>
+      <span class="btn">
+        <ion-button class="reject" color="primary-contrast" routerLink="/order-details/cancel">Reject</ion-button>
+        <ion-button class="accept" color="primary-contrast" (click)="verifyOtp(currentPickupData,$event)">Accept</ion-button>
+      </span>
+      <ion-button (click)="openGoogleMaps()" expand="block" fill="outline" shape="round">
+        Open Google Maps <ion-icon name="location" color="primary"></ion-icon>
+      </ion-button>
+    </div>
+
+    <div class="map" *ngIf="center">
+      <google-map
+        height="300px"
+        width="90vw"
+        [center]="center"
+        [zoom]="zoom"
+        [options]="mapOptions"
+      >
+        <map-marker
+          *ngIf="currentPosition"
+          [options]="markerOptions"
+          [position]="currentPosition"
+        ></map-marker>
+        <map-marker
+          *ngIf="currentPosition"
+          [options]="centerMarkerOptions"
+          [position]="center"
+        ></map-marker>
+      </google-map>
+    </div>
+
+  </div>
+</div>
+<div class="footer">
+  <!-- <app-header></app-header> -->
+</div>

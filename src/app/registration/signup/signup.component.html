@@ -1,0 +1,68 @@
+<ion-content>
+  <ion-grid class="container">
+    <ion-row class="img-logo">
+      <ion-col>
+        <ion-img src="assets/img/signup-img.png" class="mainlogo uk-animation-fade"> </ion-img>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="uk-animation-fade" style="margin: 0; width: 100%; text-align: center;">
+      <ion-col style="padding: 0;">
+        <ion-text class="welcome" style="font-size: 1.6rem;">Signup</ion-text>
+      </ion-col>
+    </ion-row>
+    <form [formGroup]="signupForm" (ngSubmit)="signUpWithEmailAndPassword()">
+
+      <div class="input-field" style="margin-top: 16px;">
+        <ion-icon name="person-outline"></ion-icon>
+        <ion-item fill="none" color="primary-contrast">
+          <ion-input type="text" placeholder="Enter your Name" formControlName="username"></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="input-field">
+        <ion-icon name="at-outline"></ion-icon>
+        <ion-item fill="none" color="primary-contrast">
+          <ion-input type="email" placeholder="Enter your Email" formControlName="email"></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="input-field">
+        <ion-icon name="lock-closed-outline"></ion-icon>
+        <ion-item fill="none" color="primary-contrast">
+          <ion-input type="password" placeholder="Enter your Password" formControlName="password"></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="input-field">
+        <ion-icon name="lock-closed-outline"></ion-icon>
+        <ion-item fill="none" color="primary-contrast">
+          <ion-input type="password" placeholder="Enter your Password" formControlName="confirmPassword"></ion-input>
+        </ion-item>
+      </div>
+
+      <ion-button class="login-button ion-margin uk-animation-slide-bottom" color="--primary-contrast" expand="block"
+        type="submit">Sign Up</ion-button>
+    </form>
+    <ion-text class="uk-animation-fade">
+      <ion-text style="display: flex;" routerLink="../login">
+        <p style="margin: 0;">Already have an account?</p>
+        <p style="color: green; margin: 0;">&nbsp;Login</p>
+      </ion-text>
+    </ion-text>
+
+    <!-- <ion-row class="hr-line uk-animation-fade">
+      <ion-col>
+        <hr class="line" />
+        <ion-text class="or">OR</ion-text>
+      </ion-col>
+    </ion-row> -->
+
+    <!-- <ion-button color="primary-contrast" class="google uk-animation-slide-bottom" type="submit"
+      (click)="auth.signUpWithGoogle()">
+      <img src="assets/img/google-logo.png" alt="">
+      <p>Sign up with Google</p>
+    </ion-button> -->
+
+  </ion-grid>
+</ion-content>

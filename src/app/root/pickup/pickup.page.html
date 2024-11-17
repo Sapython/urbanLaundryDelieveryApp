@@ -1,0 +1,85 @@
+<div class="ion-page" id="main-content">
+  <app-header title="Jobs"></app-header>
+  <ion-content class="ion-padding">
+    <div *ngFor="let pickup of pickupJobs" class="mb-2" (click)="navigateToDetail(pickup)">
+      <div class="borderGrey p-2">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="Lato400 fs-14">Order ID - {{pickup?.id | slice:0:6}}</div>
+          <div class="Lato400 fs-14 d-flex align-items-center">
+            <ion-chip *ngIf="pickup?.stage.stage" color="success"
+              >{{breakWordOnCase(pickup?.stage.stage) | titlecase}}</ion-chip
+            >
+            <div class="ms-2">
+              <ion-icon
+                class="fs-16"
+                color="success"
+                name="call-sharp"
+              ></ion-icon>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="Lato400 fs-14">{{pickup?.userDetails.displayName}}</div>
+          <div class="Lato400 fs-14">{{pickup?.userDetails?.displayId}}</div>
+          <div class="Lato400 fs-14 d-flex align-items-center">
+            <div><ion-icon class="fs-15" name="location-sharp"></ion-icon></div>
+            <div class="ms-2">
+              {{pickup?.userDetails.pickupAddress.address ||
+              pickup?.userDetails.pickupAddress.address.address}}
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between my-3">
+          <div>
+            <div class="Lato600 fs-14">Order Pickup</div>
+            <div class="d-flex align-items-center">
+              <div><ion-icon name="calendar-number-outline"></ion-icon></div>
+              <div class="Lato400 fs-14 ms-2">
+                {{pickup?.slot?.date.toDate() | date}}
+              </div>
+            </div>
+            <div class="d-flex align-items-center">
+              <div><ion-icon name="time-outline"></ion-icon></div>
+              <div class="Lato400 fs-14 ms-2">
+                {{pickup?.slot?.startTime.toDate() | date:'h:mm a'}}<span
+                  class="px-2"
+                  >-</span
+                >{{pickup?.slot.endTime.toDate() | date:'h:mm a'}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex w-100">
+          <ion-button
+            class="w-100"
+            expand="block"
+            fill="outline"
+            color="success"
+            style="text-transform: none"
+            (click)="pickupApprove(pickup.id ,'ignore',$event)"
+            >Ignore</ion-button
+          >
+          <ion-button
+            class="w-100"
+            expand="block"
+            color="success"
+            style="text-transform: none"
+            (click)="verifyOtp(pickup,$event)"
+            >{{bookingStatuses.indexOf(pickup?.stage?.stage || '') > 1 ? 'Verify
+            Otp' : 'Accept'}}</ion-button
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center" *ngIf="pickupJobs.length == 0">
+      <div class="fs-20 Lato400">No PickUp Found</div>
+      <img
+        style="max-width: 200px; margin-top: 150px"
+        src="assets/Vector.svg"
+        alt="Not Found"
+      />
+    </div>
+  </ion-content>
+  <app-footer></app-footer>
+</div>

@@ -1,0 +1,22 @@
+<div class="ion-page" id="main-content">
+  <app-header title="Verify OTP"></app-header>
+
+<ion-content>
+  <div class="d-flex align-items-center justify-content-between flex-column w-100" *ngIf="this.dataProvider.user">
+    <div class="img-outer">
+      <div class="Lato500 fs-14 t-green py-3">Enter OTP from customer</div>
+    </div>
+    <form action="" class="w-100 px-3 mt-2" [formGroup]="otpVerifyForm" (ngSubmit)="verifyBooking()">
+      <ion-item class="borderGrey BR10 mb-3">
+        <ion-input inputmode="numeric" placeholder="Full OTP" formControlName="otp"></ion-input>
+      </ion-item>
+      <div
+        class="fixed bottom-0 mb-5 pb-2 d-flex justify-content-center w-100"
+          *ngIf="otpVerifyForm.valid"
+        >
+        <ion-button style="text-transform:none" color="success" type="submit" >Verify</ion-button>
+      </div>
+    </form>
+  </div>
+</ion-content>
+</div>

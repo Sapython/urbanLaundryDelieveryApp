@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+.header{
+  text-align: center;
+  margin: 30px 0;
+}
+
+.body{
+  text-align: center;
+}
+
+.content{
+  text-align: center;
+  margin-top: 3em;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  padding: 0 30px;
+}
+ 
+.btn{
+  text-align: center;
+  margin-top: 5em;
+
+  ion-button{
+    background-color: #579540;
+    height: 46px;
+    width: 200px;
+    border-radius: 10px;
+    color: #fff;
+
+    span{
+      font-family: 'Lato', sans-serif;
+      font-size: 16px;
+    }
+  }
+}
+
+.powered{
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  bottom: 10px;
+
+
+  img{
+    justify-content: center;
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "urban-laundry-delivery",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,63 @@
+<div class="main-container" *ngIf="display">
+  <div class="header">
+    <div class="btn" routerLink="/job/job-list">
+      <ion-button color="primary-contrast">
+        <span><ion-icon name="chevron-back-outline"></ion-icon></span>
+      </ion-button>
+    </div>
+    <div class="content">
+      <p>Cancel Booking</p> 
+    </div>
+  </div> 
+
+  <div class="cancel-details">
+    <h3>Could you please let us know the reason for cancellation?</h3>
+
+    <div class="options">
+
+      <ion-item>
+        <ion-radio value="reason"></ion-radio>
+        <ion-label>Change your mind?</ion-label><br>
+      </ion-item>
+
+      <ion-item>
+        <ion-radio value="reason"></ion-radio>
+        <ion-label>Need Quickly?</ion-label><br>
+      </ion-item>
+
+      <ion-item>
+        <ion-radio value="reason"></ion-radio>
+        <ion-label>Too Costly?</ion-label><br>
+      </ion-item>
+
+      <ion-item>
+        <ion-radio value="reason"></ion-radio>
+        <ion-label>Quality Issues?</ion-label><br>
+      </ion-item>
+
+      <ion-item>
+        <ion-radio value="reason"></ion-radio>
+        <ion-label>Others</ion-label><br>
+      </ion-item>
+    </div>
+  </div>
+
+  <div class="btn">
+    <ion-button class="accept" color="primary-contrast" (click)="cancel()">Submit</ion-button>
+
+  </div>
+  
+</div>
+<div class="cancel" *ngIf="cancelSection">
+  <div class="img">
+    <img src="assets/img/cancel.gif" alt="">
+    <p>Pickup Cancelled</p>
+  </div>
+
+  <div class="btn">
+    <ion-button class="accept" color="primary-contrast" routerLink="/job/job-list">Back to Home</ion-button>
+  </div>
+</div>
+<div class="footer">
+  <!-- <app-header></app-header> -->
+</div>

@@ -1,0 +1,33 @@
+<div class="main-container" >
+  <div class="header">
+    <div class="btn" routerLink="/job/job-list">
+      <ion-button color="primary-contrast">
+        <span><ion-icon name="chevron-back-outline"></ion-icon></span>
+      </ion-button>
+    </div>
+    <div class="content">
+      <p>Notifications</p>
+    </div>
+  </div> 
+
+  <div class="section-1" *ngIf="notClear">
+    <div class="number">
+      <p>You have <span style="color: #579540;">2 Notifications</span>Today</p>
+    </div>
+  
+    <div class="today">
+      <p id="today">Today</p>
+      <p id="notification" (click)="clearAll()">Clear Notification</p>
+    </div>
+  
+    <div class="notications">
+      <img src="assets/img/notification-1.png" alt="">
+      <img src="assets/img/notification-2.png" alt="">
+      <img src="assets/img/notification-3.png" alt="">
+    </div>
+  </div>
+
+  <div class="section-2" *ngIf="clear">
+    <img src="assets/img/notification-bell.png" alt="">
+  </div>
+</div>

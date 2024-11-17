@@ -1,0 +1,125 @@
+<div class="ion-page" id="main-content">
+  <app-header title="Delivery"></app-header>
+
+  <ion-content class="ion-padding">
+    <div *ngFor="let pickup of pickupJobs" (click)="navigateToDetail(pickup)" class="mb-2">
+      <div class="borderGrey p-2">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="Lato400 fs-14">Order ID - {{pickup.id | slice:0:6}}</div>
+          <div class="Lato400 fs-14 d-flex align-items-center">
+            <div>
+              <ion-chip
+                *ngIf="pickup?.stage?.stage == 'deliveryAssigned'"
+                color="success"
+                >Pending</ion-chip
+              >
+              <ion-chip
+                *ngIf="(pickup?.stage?.stage != 'deliveryAssigned') && (pickup.recount != false)"
+                color="success"
+                >Accepted</ion-chip
+              >
+            </div>
+            <div class="ms-2">
+              <ion-icon
+                class="fs-16"
+                color="success"
+                name="call-sharp"
+              ></ion-icon>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="Lato400 fs-14">{{pickup?.userDetails?.displayName}}</div>
+          <div class="Lato400 fs-14">{{pickup?.userDetails?.displayId}}</div>
+          <div class="Lato400 fs-14 d-flex align-items-center">
+            <div><ion-icon class="fs-15" name="location-sharp"></ion-icon></div>
+            <div class="ms-2">
+              {{pickup?.userDetails?.deliveryAddress?.address }}
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between my-3">
+          <div>
+            <div class="Lato600 fs-14">Order Delivery</div>
+            <div class="d-flex align-items-center">
+              <div><ion-icon name="calendar-number-outline"></ion-icon></div>
+              <div class="Lato400 fs-14 ms-2">
+                {{pickup?.slot?.date?.toDate() | date}}
+              </div>
+            </div>
+            <div class="d-flex align-items-center">
+              <div><ion-icon name="time-outline"></ion-icon></div>
+              <div class="Lato400 fs-14 ms-2">
+                {{pickup?.slot?.startTime?.toDate() | date:'h:mm a'}}<span
+                  class="px-2"
+                  >-</span
+                >{{pickup?.slot?.endTime?.toDate() | date:'h:mm a'}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex align-items-center py-3 activeClothes">
+          <ng-container *ngFor="let cloth of pickup?.activeClothes">
+            <!-- <div class="borderGrey p-2 ms-2 clothBadge">
+              <div>{{cloth.name}}</div>
+              <div class="badge">{{cloth.quantity}}</div>
+            </div> -->
+            <ion-chip color="primary" mode="ios" outline="true">
+              <ion-label><strong>{{cloth.quantity}}</strong> X {{cloth.name}}</ion-label>
+            </ion-chip>
+          </ng-container>
+        </div>
+        <div class="d-flex align-items-center pt-1 pb-2 px-2">
+          <div class="Lato500 fs-13">
+            Total weight: <b>{{pickup.totalWeight}} Kg</b>
+          </div>
+          <div class="Lato500 fs-13 ms-3">
+            Total Item: <b>{{this.quantity}}</b>
+          </div>
+        </div>
+        <div
+          class="border d-flex justify-content-between align-items-center Lato500 fs-13 p-2"
+        >
+          <div>
+            <div>Total</div>
+            <div class="Lato600 pt-1 fs-13">
+              Rs {{pickup.billingDetail.total}}
+            </div>
+          </div>
+          <div>
+            <div>Delivery Mode</div>
+            <div class="Lato600 pt-1 fs-13">COD</div>
+          </div>
+        </div>
+        <div class="d-flex w-100">
+          <ion-button
+            class="w-100"
+            expand="block"
+            fill="outline"
+            color="success"
+            style="text-transform: none"
+            (click)="deliveryApprove(pickup ,'ignore',$event)"
+            >Ignore</ion-button
+          >
+          <ion-button
+            class="w-100"
+            expand="block"
+            color="success"
+            style="text-transform: none"
+            (click)="deliveryApprove(pickup ,'accept',$event)"
+            >Accept</ion-button
+          >
+        </div>
+      </div>
+    </div>
+    <div class="text-center" *ngIf="!pickupJobs.length">
+      <div class="fs-20 Lato400">No Delivery Job Found</div>
+      <img
+        style="max-width: 200px; margin-top: 150px"
+        src="assets/notFound.svg"
+        alt="Not Found"
+      />
+    </div>
+  </ion-content>
+  <app-footer></app-footer>
+</div>

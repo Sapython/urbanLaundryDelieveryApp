@@ -1,0 +1,42 @@
+<div class="section1" *ngIf="confirmation">
+  <div class="header">
+    <!-- <div class="btn" routerLink="/job/job-list">
+      <ion-button color="primary-contrast">
+        <span><ion-icon name="chevron-back-outline"></ion-icon></span>
+      </ion-button>
+    </div> -->
+    <div class="content">
+      <p>Waiting for confirmation</p>
+    </div> 
+  </div>
+
+  <div class="content-info">
+    <div class="img"><img src="assets/img/wait-logo.png" alt=""></div>
+    <div class="data">
+      <img src="assets/img/wait-clock.png" alt="">
+      <p>Verifying details</p>
+    </div>
+    <span>Order No. 2468</span>
+    <!-- <span class="button">
+      <ion-button class="reject" color="primary-contrast" routerLink="../order-details/cancel">Cancel</ion-button>
+      <ion-button class="accept" color="primary-contrast">Resent Request</ion-button>
+  </span> -->
+  </div>
+</div>
+
+
+<div class="section2" *ngIf="confirmed">
+  <div class="main-container">
+    <div id="img">
+      <img src="assets/img/pickup2.gif">
+      <p>{{dataProvider.mode=='pickup' ?  'Pickup' : 'Delivery'}} Confirmed</p>
+    </div>
+  </div>
+  <div class="btn" id="estimateBtn">
+    <ion-button color="primary-contrast" routerLink="../pickup">
+      <span>
+        <p>Back To Home</p>
+      </span>
+    </ion-button>
+  </div>  
+</div>

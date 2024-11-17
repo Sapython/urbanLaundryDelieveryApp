@@ -1,0 +1,48 @@
+<ion-content class="uk-animation-fade">
+  <ion-grid class="container">
+    <div class="top-header">
+      <div class="btn" routerLink="/registration/phone">
+        <ion-button color="primary-contrast">
+          <span><ion-icon name="chevron-back-outline"></ion-icon></span>
+        </ion-button>
+      </div>
+    </div>
+    <form [formGroup]="otpForm" (ngSubmit)="otpVerify()">
+      <ion-row>
+        <div class="img">
+          <img src="assets/img/otp-logo.png" alt="" />
+        </div>
+
+        <div class="data">
+          <p>Enter 6 Digit Code</p>
+        </div>
+
+        <ion-text class="textheader">
+          Enter 6 Digit code that you received on your phone.
+        </ion-text>
+      </ion-row>
+
+      <div class="ip">
+        <input
+          type="text"
+          placeholder="Enter Otp here"
+          class="w-100"
+          formControlName="otpVerify"
+        />
+      </div>
+      <div class="code">
+        <p>Don't receive the Code?</p>
+        &nbsp;
+        <p style="color: #579540">Resend OTP</p>
+      </div>
+
+      <ion-button
+        class="login-button ion-margin"
+        color="--primary-contrast"
+        expand="block"
+        type="submit"
+        >Continue</ion-button
+      >
+    </form>
+  </ion-grid>
+</ion-content>

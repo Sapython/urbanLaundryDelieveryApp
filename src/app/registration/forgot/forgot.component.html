@@ -1,0 +1,38 @@
+<ion-content class=" uk-animation-fade">
+  <ion-grid class="container">
+    <div class="top-header">
+      <div class="btn" routerLink="/registration/login">
+        <ion-button color="primary-contrast">
+          <span><ion-icon name="chevron-back-outline"></ion-icon></span>
+        </ion-button>
+      </div>
+ 
+    </div>
+    <ion-row>
+
+      <div class="img">
+        <img src="assets/img/forgot-logo.png" alt="">
+      </div>
+      
+      <div class="data">
+        <p>Forgot Password</p>
+  
+      </div>
+      <ion-text class="textheader">
+        Enter your email for the verification process. We will send 4 digits code to your email.
+      </ion-text>
+    </ion-row>
+
+    <form>
+      <div class="input-field" style="margin-top: 16px;">
+        <ion-icon name="at-outline"></ion-icon>
+        <ion-item fill="none" color="primary-contrast" style="margin-bottom: 1em;">
+          <ion-input type="email" placeholder="Enter your Email"></ion-input>
+        </ion-item>
+      </div>
+    </form>
+
+    <ion-button class="login-button ion-margin" color="--primary-contrast" expand="block" type="submit"
+      routerLink="/registration/otp">Continue</ion-button>
+  </ion-grid>
+</ion-content>

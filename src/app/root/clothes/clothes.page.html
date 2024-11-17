@@ -1,0 +1,130 @@
+<div class="ion-page" id="main-content">
+  <app-header title="Select clothes"></app-header>
+
+  <ion-content class="ion-padding">
+    <div class="">
+      <div class="scroll">
+        <div class="search" id="open-modal" *ngIf="mode=='add'">
+          <input type="text" placeholder="Search Shirt, Pant, Shorts...">
+          <ion-icon name="search-outline"></ion-icon>
+        </div>
+        <ion-segment [value]="services[0]" [scrollable]="true" (ionChange)="switchService($event)">
+          <ion-segment-button *ngFor="let service of services" [value]="service">
+            <ion-label>{{service.name}}</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+        <div class="items">
+          <div class="item" *ngFor="let selectedCloth of (currentService?.activeClothes || []);let i = index">
+            <span id="cloth">
+              <p>{{selectedCloth.name}}</p>
+              <p>₹ {{selectedCloth.cost}}</p>
+            </span>
+            <span id="counter" >
+              <button *ngIf="mode=='add'" id="sub" (click)="selectedCloth.count ==0 ? deleteSelectedCloth(currentService?.activeClothes || [],i) : selectedCloth.count = (selectedCloth.count || 0) - 1;this.calculateTotal();"><ion-icon name="remove-outline"></ion-icon></button>
+              <p id="kg">{{selectedCloth.count}}</p>
+              <button  *ngIf="mode=='add'" id="add" (click)="selectedCloth.count = (selectedCloth.count || 0) + 1;this.calculateTotal();"><ion-icon name="add-outline"></ion-icon></button>
+            </span>
+          </div>
+          <img class="notFoundImage" src="assets/Vector.svg" *ngIf="(currentService?.activeClothes || []).length == 0">
+        </div>
+        <hr>
+        <div class="quantity">
+          <div class="weight" *ngIf="currentService?.type==true">
+            <p>Total Weight</p>
+            <span id="counter">
+              <!-- <p id="sub" (click)="counter12('sub')">-</p> -->
+              <input id="kg" type="text" inputmode="numeric" [disabled]="mode!='add'" placeholder="kgs" [(ngModel)]="currentService.noOfKgs" (input)="this.calculateTotal();">
+              <!-- <p id="add" (click)="counter12('add')">+</p> -->
+            </span>
+          </div>
+          <div class="total">
+            <p id="total">Total Quantity:</p>
+            <p id="kg">{{this.totalQuantity}}</p>
+          </div>
+        </div>
+        <div class="summary">
+          <table>
+            <thead>
+              <tr>
+                <th>Order Summary</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of billItems">
+                <td>{{item.name}} - {{item.quantity}}</td>
+                <td class="amount">{{item.cost | currency:'INR'}}</td>
+              </tr>
+              <tr>
+                <td><b>Total</b></td>
+                <td class="amount"><b>{{this.total | currency:'INR'}}</b></td>
+              </tr>
+              <tr>
+                <td><b>Discount - </b> {{this.dataProvider.currentPickup?.billingDetail?.discount+'%'}}</td>
+                <td class="amount">{{((this.dataProvider.currentPickup?.billingDetail?.total || 0)/100)*(this.dataProvider.currentPickup?.billingDetail?.discount || 0) | currency:'INR'}}</td>
+              </tr>
+              <tr>
+                <td><b>Total Tax - </b> {{this.dataProvider.appSettings.tax.tax}}%</td>
+                <td class="amount">{{totalAppliedTax | currency:'INR'}}</td>
+              </tr>
+              <tr>
+                <td><b>Total Amount</b></td>
+                <td class="amount"><b>{{grandTotal | currency:'INR'}}</b> <ion-icon color="primary" name="refresh-outline" (click)="calculateTotal()"></ion-icon></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="borderGrey mt-3 w-100">
+      <ion-item>
+        <ion-label>Total Weight</ion-label>
+        <ion-input [disabled]="mode!='add'" placeholder="Enter Total Weight" [(ngModel)]="totalNoOfKgs"></ion-input>
+      </ion-item>
+    </div>
+    <!-- footer -->
+    <div class="pickup">
+      <div class="text">
+        <p id="estimate">Total Estimate</p>
+        <p id="total">{{this.grandTotal | currency:'INR'}}</p>
+      </div>
+      <div class="btn" id="estimateBtn">
+        <ion-button [disabled]="this.total<=0" color="primary-contrast" (click)="initClothBillingToDB()">
+          <span>
+            <p style="margin-top: 20px;">{{ mode!='add' ? 'Settle' : 'Finalize'}}</p>
+          </span>
+        </ion-button>
+      </div>
+    </div>
+  </ion-content>
+</div>
+
+<!-- modal -->
+
+<ion-modal #modal trigger="open-modal">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Add Clothes</ion-title>
+        <ion-buttons slot="start">
+          <ion-button (click)="modal.dismiss()" color="danger">Close</ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+          <ion-button (click)="modal.dismiss()" color="primary">Submit</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+       <ion-list>
+        <ion-searchbar placeholder="Filter CLothes" inputmode="search" type="search" (ionChange)="search($event)" [debounce]="250" showCancelButton="always"></ion-searchbar>
+        <ion-item *ngFor="let cloth of filteredClothes" >
+          <ion-label>{{cloth.name}}</ion-label>
+          <ion-checkbox slot="start" mode="ios" (ionChange)="addToClothes(cloth,$event)" [checked]="existsInClothes(cloth)"></ion-checkbox>
+          <ion-chip color="primary" mode="ios" outline="true">
+            <ion-label>{{cloth.cost}}</ion-label>
+          </ion-chip>
+        </ion-item>
+       </ion-list>
+    </ion-content>
+  </ng-template>
+</ion-modal>

@@ -1,0 +1,43 @@
+<ion-content class=" uk-animation-fade">
+  <form  [formGroup]="phoneLoginForm" (ngSubmit)="loginInWithPhoneNumber()">
+    <ion-grid class="container">
+      <div class="top-header">
+        <div class="data">
+          <p>Continue with Phone</p>
+        </div>
+      </div>
+      <div class="img">
+        <img src="assets/img/phone.svg" alt="" />
+      </div>
+
+      <ion-row>
+        <ion-text class="textheader">
+          You will receive 4 Digit Code to verify next
+        </ion-text>
+      </ion-row>
+      <ion-row class="cont1">
+        <ion-col>
+          <ion-text class="title">Enter Your Phone</ion-text>
+          <ion-input
+            placeholder="Enter your Phone Number"
+            type="number"
+             formControlName="phoneNumber"
+          ></ion-input>
+          <div id="recaptcha-container"></div>
+          <div class="ion-text-center" routerLink="/forgotPassword">
+            <ion-text class="forgot"> Don't receive code? </ion-text>
+            <ion-text style="color: green">Resend OTP</ion-text>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button class="ion-margin" color="secondary" expand="block" type="submit" >
+
+            Continue
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

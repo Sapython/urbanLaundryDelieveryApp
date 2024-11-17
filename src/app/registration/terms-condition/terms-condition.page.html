@@ -1,0 +1,21 @@
+<div class="ion-page" id="main-content">
+  <app-header title="Term & Conditions"></app-header>
+<ion-content>
+<div class="Lato400 fs-14 t-grey px-3 mt-4">
+  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non cum, quis facilis molestias in odit perferendis laudantium nam odio, ex quo ab maxime et velit minima impedit accusamus est quam accusantium atque, voluptatem dolor rem necessitatibus voluptates? Debitis quae culpa quos nulla necessitatibus nihil dolores corporis ab? Odit, accusamus eos!
+</div>
+<div class="fs-15 Lato500 my-4 px-3">Acceptance Of Term</div>
+<div class="Lato400 fs-14 t-grey px-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi aspernatur iste autem nisi minima sequi non consequuntur laborum ut quae nemo quaerat vel placeat adipisci aliquid tempora, iusto temporibus culpa assumenda odit, in quasi quo accusamus. Harum fuga laudantium quam excepturi! Culpa exercitationem voluptates excepturi in itaque, aut laborum voluptas.</div>
+<div class="fixed bottom-0 mb-4  w-100">
+  <ion-item>
+    <ion-checkbox class="no-margin" slot="start" (click)="triggerCheckBox()"></ion-checkbox>
+    <ion-label class="ms-2">I agree with terms & Conditions</ion-label>
+  </ion-item>
+  <div class="d-flex justify-content-center mb-4 align-items-center w-100">
+    <ion-button style="text-transform:none" expand="block" fill="outline" color="success" routerLink="/cancel-request">Decline</ion-button>
+    <ion-button style="text-transform:none" expand="block" color="success" [disabled]="checked" (click)="signUp()">Accept</ion-button>
+  </div>
+</div>
+
+</ion-content>
+</div>

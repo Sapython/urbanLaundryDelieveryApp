@@ -1,0 +1,70 @@
+<ion-content>
+  <ion-grid class="container">
+    <!-- <app-text-header text="Enter 4 Digit Code"></app-text-header> -->
+    <div class="top-header">
+      <div class="btn" routerLink="/job/job-list">
+        <ion-button color="primary-contrast">
+          <span><ion-icon name="chevron-back-outline"></ion-icon></span>
+        </ion-button>
+      </div>
+      <div class="data">
+        <p>Delivery Accept</p>
+      </div>
+    </div>
+    <ion-row>
+      <ion-text class="textheader">
+        <p style="font-weight: bold">Code is sent to 9874563214</p>
+        <p id="otp">Enter OTP form Customer</p>
+      </ion-text>
+    </ion-row>
+    <div class="ip">
+      <!-- <form [formGroup] ="otpForm">
+    <ng-otp-input #ngOtpInput (onInputChange)="onOtpChange($event)" *ngIf="showOtpComponent" [config]="config" formControlName="otpInput"></ng-otp-input>
+  </form> -->
+
+      <form [formGroup]="otpForm">
+        <ion-row class="otp">
+          <input maxlength="1" (input)="opt2.focus()" formControlName="otp1" />
+          <input
+            maxlength="1"
+            (input)="opt3.focus()"
+            #opt2
+            formControlName="otp2"
+          />
+          <input
+            maxlength="1"
+            (input)="opt4.focus()"
+            #opt3
+            formControlName="otp3"
+          />
+          <input
+            maxlength="1"
+            (input)="opt5.focus()"
+            #opt4
+            formControlName="otp4"
+          />
+          <input
+            maxlength="1"
+            (input)="submit()"
+            #opt5
+            formControlName="otp5"
+          />
+          <!-- <input maxlength="1" (input)="submit()" #opt6 formControlName="otp6"> -->
+        </ion-row>
+      </form>
+    </div>
+    <div class="code">
+      <p id="code1">Don't receive the Code?</p>
+      &nbsp;
+      <p id="code2" style="color: #579540; margin-bottom: 10px">Resend OTP</p>
+    </div>
+
+    <div class="btn" id="estimateBtn">
+      <ion-button color="primary-contrast" (click)="submit()">
+        <span>
+          <p>Verify</p>
+        </span>
+      </ion-button>
+    </div>
+  </ion-grid>
+</ion-content>
